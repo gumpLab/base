@@ -1,2 +1,2 @@
 # base
-Good Good Study, Day Day Up !
+# Don't worry about the vague future, just strive for the clear present.
