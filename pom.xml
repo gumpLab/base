@@ -12,6 +12,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <modules>
+        <module>essays</module>
+    </modules>
+
     <groupId>org.gumpLab</groupId>
     <artifactId>base</artifactId>
     <version>1.0-SNAPSHOT</version>
