@@ -18,6 +18,6 @@ server:
     max-threads: 1000
     min-spare-threads: 30
   connection-timeout: 5000ms
-  port: 9999
+  port: ${random.int[1024,9999]}
   servlet:
     context-path: /essays
