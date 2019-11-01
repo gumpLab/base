@@ -26,11 +26,14 @@ public class SwaggerConfig {
     @Value("${server.servlet.context-path}")
     private String pathMapping;
 
+    @Value("${server.port}")
+    private String port;
+
     private String initContextInfo() {
         StringBuffer sb = new StringBuffer();
         sb.append("REST API")
                 .append("<br/>")
-                .append("Essays project for Spring Boot");
+                .append("Response project for Spring Boot");
 
         return sb.toString();
     }
@@ -38,14 +41,14 @@ public class SwaggerConfig {
 
     @Bean
     public Docket restfulApi() {
-        System.out.println("http://localhost:9999" + pathMapping + "/swagger-ui.html");
+        System.out.println("http://localhost:" + port + pathMapping + "/swagger-ui.html");
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Essays")
+                .groupName("Response")
                 .apiInfo(initApiInfo())
                 //.pathMapping(pathMapping) // base，最终调用接口后会和paths拼接在一起
                 .groupName("RestfulApi")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.gumplab.essays")) //包下的类，才生成接口文档
+                .apis(RequestHandlerSelectors.basePackage("org.gumplab.response")) //包下的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)) //加了ApiOperation注解的类，才生成接口文档
                 .paths(PathSelectors.any())
                 .build();
@@ -53,9 +56,9 @@ public class SwaggerConfig {
 
     private ApiInfo initApiInfo() {
         return new ApiInfoBuilder()
-                .title("Essays")
+                .title("Response")
                 .description("0.0.1-SNAPSHOT")
-                .version("Essays project for Spring Boot")
+                .version("Response project for Spring Boot")
                 .contact("gumpLab")
                 .termsOfServiceUrl("") //服务条款
                 .license("The Apache License, Version 2.0")//链接显示文字

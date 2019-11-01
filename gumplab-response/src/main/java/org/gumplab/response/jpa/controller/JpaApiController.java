@@ -2,6 +2,7 @@ package org.gumplab.response.jpa.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.gumplab.response.common.result.Result;
 import org.gumplab.response.jpa.entity.User;
 import org.gumplab.response.jpa.service.JapApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,32 @@ public class JpaApiController {
     @Autowired
     private JapApiService japApiService;
 
-    @ApiOperation("查询全部用户")
+    @ApiOperation("select all users")
     @GetMapping("/findAll")
-    public List<User> findAll(){
-        return japApiService.findAll();
+    public void findAll() {
+        japApiService.findAll();
+    }
+
+    @ApiOperation("empty response test")
+    @GetMapping(value = "/empty")
+    public void empty() {
+    }
+
+    @ApiOperation("error response test")
+    @GetMapping(value = "/error")
+    public void error() {
+        int i = 9 / 0;
+    }
+
+    @ApiOperation("success response test")
+    @GetMapping(value = "/getResult")
+    public Result getResult() {
+        return Result.success("test");
+    }
+
+    @ApiOperation("success response test")
+    @GetMapping(value = "/getStr")
+    public String getStr() {
+        return "afdasfdsdfsf";
     }
 }
