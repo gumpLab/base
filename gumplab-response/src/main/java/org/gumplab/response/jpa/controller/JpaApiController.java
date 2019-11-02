@@ -23,7 +23,8 @@ public class JpaApiController {
     @ApiOperation("select all users")
     @GetMapping("/findAll")
     public void findAll() {
-        japApiService.findAll();
+        List<User> all = japApiService.findAll();
+        System.out.println(all.get(0).getName());
     }
 
     @ApiOperation("empty response test")
@@ -40,12 +41,18 @@ public class JpaApiController {
     @ApiOperation("success response test")
     @GetMapping(value = "/getResult")
     public Result getResult() {
-        return Result.success("test");
+        return Result.success(new User());
     }
 
     @ApiOperation("success response test")
     @GetMapping(value = "/getStr")
     public String getStr() {
         return "afdasfdsdfsf";
+    }
+
+    @ApiOperation("error response test")
+    @GetMapping(value = "/error1")
+    public Integer error1() {
+        return Integer.valueOf("a");
     }
 }

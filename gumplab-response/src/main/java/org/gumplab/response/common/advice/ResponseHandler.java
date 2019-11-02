@@ -1,6 +1,7 @@
+
 package org.gumplab.response.common.advice;
 
-import com.alibaba.druid.support.json.JSONUtils;
+import org.gumplab.response.common.utils.JsonUtil;
 import org.gumplab.response.common.result.ErrorResult;
 import org.gumplab.response.common.result.Result;
 import org.springframework.core.MethodParameter;
@@ -25,9 +26,11 @@ public class ResponseHandler implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         if (o instanceof ErrorResult) {
             ErrorResult error = (ErrorResult) o;
-            return Result.fail(error.getCode(), error.getMsg() + "-" + error.getException());
+            return Result.fail(error.getCode(), error.getMsg());
         } else if (o instanceof String) {
-            return JSONUtils.toJSONString(o);
+            return JsonUtil.object2Json(Result.success(o));
+        } else if (o instanceof Result) {
+            return o;
         }
         return Result.success(o);
     }

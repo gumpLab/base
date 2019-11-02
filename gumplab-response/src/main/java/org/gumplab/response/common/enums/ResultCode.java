@@ -7,7 +7,7 @@ public enum ResultCode {
 
     success(200, "success"),
 
-    error(500, "error");
+    error(500, "系统异常, 请联系管理员!");
 
     Integer code;
 
