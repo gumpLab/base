@@ -2,6 +2,8 @@ package org.gumplab.response.jpa.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.gumplab.response.common.enums.ResultCode;
+import org.gumplab.response.common.exception.BusinessException;
 import org.gumplab.response.common.result.Result;
 import org.gumplab.response.jpa.entity.User;
 import org.gumplab.response.jpa.service.JapApiService;
@@ -38,13 +40,13 @@ public class JpaApiController {
         int i = 9 / 0;
     }
 
-    @ApiOperation("success response test")
+    @ApiOperation("Result response test")
     @GetMapping(value = "/getResult")
     public Result getResult() {
         return Result.success(new User());
     }
 
-    @ApiOperation("success response test")
+    @ApiOperation("String response test")
     @GetMapping(value = "/getStr")
     public String getStr() {
         return "afdasfdsdfsf";
@@ -54,5 +56,11 @@ public class JpaApiController {
     @GetMapping(value = "/error1")
     public Integer error1() {
         return Integer.valueOf("a");
+    }
+
+    @ApiOperation("BusinessException response test")
+    @GetMapping(value = "/error2")
+    public String error2() {
+        throw new BusinessException(ResultCode.businses_exception_test);
     }
 }

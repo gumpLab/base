@@ -1,13 +1,13 @@
 package org.gumplab.response.common.enums;
 
 
-import io.swagger.models.auth.In;
-
 public enum ResultCode {
 
     success(200, "success"),
 
-    error(500, "系统异常, 请联系管理员!");
+    error(500, "系统异常, 请联系管理员!"),
+
+    businses_exception_test(10000, "自定义返回值!");
 
     Integer code;
 
