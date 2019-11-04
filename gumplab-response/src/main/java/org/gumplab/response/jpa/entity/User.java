@@ -3,6 +3,7 @@ package org.gumplab.response.jpa.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Table(name = "user") //表名与实体名一样可不用配置该注解
 @Entity
@@ -15,6 +16,20 @@ public class User {
 
     @Column(nullable=false) // nullable=false 在内部将nullable = false转换为@NotNull
     private String name;
+
+    @Column(nullable=false)
+    private String password;
+
+    @Email
+    @Column(nullable=false)
+    private String email;
+
+    @Column(nullable=false)
+    private String sex;
+
+
+    @Column(nullable=false)
+    private String idcard;
 
     /**
      * GenerationType.TABLE : 使用一个特定的数据库表格来保存主键。

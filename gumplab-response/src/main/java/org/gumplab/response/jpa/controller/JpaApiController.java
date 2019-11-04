@@ -22,7 +22,7 @@ public class JpaApiController {
     @Autowired
     private JapApiService japApiService;
 
-    @ApiOperation("select all users")
+    @ApiOperation("test nullpointexception")
     @GetMapping("/findAll")
     public void findAll() {
         List<User> all = japApiService.findAll();
