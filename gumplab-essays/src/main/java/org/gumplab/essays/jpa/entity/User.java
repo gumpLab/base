@@ -16,6 +16,9 @@ public class User {
     @Column(nullable=false) // nullable=false 在内部将nullable = false转换为@NotNull
     private String name;
 
+    @Column(nullable=false) // nullable=false 在内部将nullable = false转换为@NotNull
+    private String password;
+
     /**
      * GenerationType.TABLE : 使用一个特定的数据库表格来保存主键。
      * GenerationType.AUTO : 根据底层数据库的序列来生成主键，条件是数据库支持序列。
