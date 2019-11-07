@@ -15,6 +15,7 @@
     <modules>
         <module>gumplab-essays</module>
         <module>gumplab-response</module>
+        <module>gumplab-springcloud-gateway</module>
     </modules>
 
     <groupId>org.gumpLab</groupId>
