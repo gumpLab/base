@@ -1,5 +1,6 @@
 package org.gumplab.essays.jpa.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "user") //表名与实体名一样可不用配置该注解
 @Entity
 @Data
+@Builder
 public class User {
 
     @Id

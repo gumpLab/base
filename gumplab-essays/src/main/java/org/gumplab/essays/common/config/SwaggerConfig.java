@@ -27,6 +27,9 @@ public class SwaggerConfig {
     @Value("${server.servlet.context-path}")
     private String pathMapping;
 
+    @Value("${server.port}")
+    private String port;
+
     private String initContextInfo() {
         StringBuffer sb = new StringBuffer();
         sb.append("REST API")
@@ -39,7 +42,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket restfulApi() {
-        System.out.println("http://localhost:9999" + pathMapping + "/swagger-ui.html");
+        System.out.println("http://127.0.0.1:" + port + pathMapping + "/swagger-ui.html");
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("Essays")
                 .apiInfo(initApiInfo())
