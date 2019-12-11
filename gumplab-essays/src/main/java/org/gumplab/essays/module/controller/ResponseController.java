@@ -1,12 +1,10 @@
-package org.gumplab.response.jpa.controller;
+package org.gumplab.essays.module.controller;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.gumplab.essays.module.entity.User;
 import org.gumplab.response.common.enums.ResultCode;
 import org.gumplab.response.common.exception.BusinessException;
 import org.gumplab.response.common.result.Result;
-import org.gumplab.response.jpa.entity.User;
-import org.gumplab.response.jpa.service.JapApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,13 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Api(value = "API - JpaApiController", description = "This is spring-data-jpa base api !")
 @RestController
-@RequestMapping(value = "/api-jpa")
-public class JpaApiController {
+@RequestMapping(value = "/response")
+public class ResponseController {
 
     @Autowired
-    private JapApiService japApiService;
+    private org.gumplab.essays.module.service.BaseService japApiService;
 
     @ApiOperation("test nullpointexception")
     @GetMapping("/findAll")
@@ -43,13 +40,13 @@ public class JpaApiController {
     @ApiOperation("Result response test")
     @GetMapping(value = "/getResult")
     public Result getResult() {
-        return Result.success(new User());
+        return Result.success(User.builder().build());
     }
 
     @ApiOperation("String response test")
     @GetMapping(value = "/getStr")
     public String getStr() {
-        return "afdasfdsdfsf";
+        return "abcdefghiklmn";
     }
 
     @ApiOperation("error response test")
