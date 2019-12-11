@@ -12,7 +12,8 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-@RestControllerAdvice
+// 必须指定 basePackages，负责会导致 swagger 无法解析json而无法使用
+@RestControllerAdvice(basePackages = "org.gumplab")
 public class ResponseHandler implements ResponseBodyAdvice<Object> {
 
 
@@ -23,15 +24,15 @@ public class ResponseHandler implements ResponseBodyAdvice<Object> {
     }
 
     @Override
-    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        if (o instanceof ErrorResult) {
-            ErrorResult error = (ErrorResult) o;
+    public Object beforeBodyWrite(Object obj, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        if (obj instanceof ErrorResult) {
+            ErrorResult error = (ErrorResult) obj;
             return Result.fail(error.getCode(), error.getMsg());
-        } else if (o instanceof String) {
-            return JsonUtil.object2Json(Result.success(o));
-        } else if (o instanceof Result) {
-            return o;
+        } else if (obj instanceof String) {
+            return JsonUtil.object2Json(Result.success(obj));
+        } else if (obj instanceof Result) {
+            return obj;
         }
-        return Result.success(o);
+        return Result.success(obj);
     }
 }

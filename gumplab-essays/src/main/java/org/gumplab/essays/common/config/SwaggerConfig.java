@@ -2,27 +2,41 @@ package org.gumplab.essays.common.config;
 
 import com.google.common.base.Predicate;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.List;
+
 import static com.google.common.base.Predicates.or;
+import static com.google.common.collect.Lists.newArrayList;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
  * SwaggerConfig
  */
+@Slf4j
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class SwaggerConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/swagger/**").addResourceLocations("classpath:/static/swagger/");
+        registry.addResourceHandler("/swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
 
     @Value("${server.servlet.context-path}")
     private String pathMapping;
@@ -30,41 +44,32 @@ public class SwaggerConfig {
     @Value("${server.port}")
     private String port;
 
-    private String initContextInfo() {
-        StringBuffer sb = new StringBuffer();
-        sb.append("REST API")
-                .append("<br/>")
-                .append("Essays project for Spring Boot");
-
-        return sb.toString();
-    }
-
-
     @Bean
-    public Docket restfulApi() {
-        System.out.println("http://127.0.0.1:" + port + pathMapping + "/swagger-ui.html");
+    public Docket createRestApi() {
+        log.info("http://127.0.0.1:" + port + pathMapping + "/swagger-ui.html");
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Essays")
-                .apiInfo(initApiInfo())
-                //.pathMapping(pathMapping) // base，最终调用接口后会和paths拼接在一起
-                .groupName("RestfulApi")
+                .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.gumplab.essays")) //包下的类，才生成接口文档
+                .apis(RequestHandlerSelectors.basePackage("org.gumplab.essays.module")) //包下的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)) //加了ApiOperation注解的类，才生成接口文档
                 .paths(PathSelectors.any())
+                .build()
+                //.globalOperationParameters(parameters())
+                .securitySchemes(security());
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("essays")
+                .description("essays every day ~")
+                .version("0.0.1")
                 .build();
     }
 
-    private ApiInfo initApiInfo() {
-        return new ApiInfoBuilder()
-                .title("Essays")
-                .description("0.0.1-SNAPSHOT")
-                .version("Essays project for Spring Boot")
-                .contact("gumpLab")
-                .termsOfServiceUrl("") //服务条款
-                .license("The Apache License, Version 2.0")//链接显示文字
-                .licenseUrl("http://www.baidu.com")//网站链接
-                .build();
+    private List<ApiKey> security() {
+        return newArrayList (
+                new ApiKey("token", "token", "header")
+        );
     }
 
     /**

@@ -1,4 +1,4 @@
-package org.gumplab.essays.jpa.entity;
+package org.gumplab.essays.module.entity;
 
 import lombok.Builder;
 import lombok.Data;

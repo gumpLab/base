@@ -13,8 +13,8 @@
     </parent>
 
     <modules>
-        <module>gumplab-essays</module>
         <module>gumplab-response</module>
+        <module>gumplab-essays</module>
         <module>gumplab-springcloud-gateway</module>
         <module>gumplab-redis</module>
         <module>gumplab-mvc</module>
@@ -32,10 +32,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <druid.version>1.1.10</druid.version>
         <lombok.version>1.18.8</lombok.version>
-        <swagger.version>2.2.2</swagger.version>
+        <swagger.version>2.7.0</swagger.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.gumpLab</groupId>
+            <artifactId>gumplab-response</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,23 +98,9 @@
             <version>${swagger.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
-    
 </project>
+
+
+

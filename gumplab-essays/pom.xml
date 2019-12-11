@@ -11,7 +11,6 @@
 
     <artifactId>gumplab-essays</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>essays</name>
     <description>Essays project for Spring Boot</description>
 
     <properties>
@@ -24,12 +23,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.gumpLab</groupId>
-            <artifactId>gumplab-response</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

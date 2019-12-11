@@ -1,9 +1,9 @@
-package org.gumplab.essays.jpa.service.impl;
+package org.gumplab.essays.module.service.impl;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.gumplab.essays.jpa.entity.User;
-import org.gumplab.essays.jpa.service.UserService;
+import org.gumplab.essays.module.entity.User;
+import org.gumplab.essays.module.service.UserService;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;

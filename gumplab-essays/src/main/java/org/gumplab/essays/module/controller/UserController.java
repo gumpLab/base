@@ -1,13 +1,11 @@
-package org.gumplab.essays.jpa.controller;
+package org.gumplab.essays.module.controller;
 
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.gumplab.essays.jpa.entity.User;
-import org.gumplab.essays.jpa.service.UserService;
-import org.gumplab.response.common.enums.ResultCode;
-import org.gumplab.response.common.exception.BusinessException;
+import org.gumplab.essays.module.entity.User;
+import org.gumplab.essays.module.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +16,16 @@ import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+@Api
 @Slf4j
-@Api(value = "API - JpaApiController", description = "Spring-Data-Jpa Base Api !")
 @RestController
-@RequestMapping(value = "/api-jpa")
+@RequestMapping(value = "/async")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @ApiOperation("Test Async")
+    @ApiOperation("TestAsync")
     @GetMapping
     public List<User> findAll() throws ExecutionException, InterruptedException {
 
