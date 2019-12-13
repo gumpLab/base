@@ -29,9 +29,9 @@ public class GlobalExceptionHandler {
      * 自定义异常处理
      */
     @ExceptionHandler(BusinessException.class)
-    public ErrorResult handleBusinessException(Throwable e, HttpServletRequest request) {
+    public ErrorResult handleBusinessException(BusinessException e, HttpServletRequest request) {
         log.error("URL-->: {}, 自定义异常--> ", request.getRequestURI(), e);
-        return ErrorResult.fail(ResultCode.businses_exception_test, e);
+        return ErrorResult.fail(e.getCode(), e.getMsg(), e);
     }
 
 }

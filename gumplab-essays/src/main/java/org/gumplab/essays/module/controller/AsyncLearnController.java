@@ -6,37 +6,39 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.gumplab.essays.module.entity.User;
 import org.gumplab.essays.module.service.UserService;
+import org.gumplab.response.common.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @Api
 @Slf4j
 @RestController
 @RequestMapping(value = "/async")
-public class UserController {
+public class AsyncLearnController {
 
     @Autowired
     private UserService userService;
 
     @ApiOperation("TestAsync")
     @GetMapping
-    public List<User> findAll() throws ExecutionException, InterruptedException {
+    public List<User> findAll() {
 
+        userService.asyncTest1(User.builder().id(1L).build());
+        log.info("Async Test-1 - Controller: [{}]", Thread.currentThread().getName());
 
-        User user1 = userService.asyncTest1(1L);
-        log.info("Async Test-1 - Controller: [{}], [{}]", Optional.ofNullable(user1).map(User::getName).orElse(null), Thread.currentThread().getName());
+        try {
+            Future<User> user2Future = userService.asyncTest2(User.builder().id(2L).build());
+            log.info("Async Test-2 - Controller: [{}], [{}]", user2Future.get(), Thread.currentThread().getName());
+        } catch (Exception e) {
+            throw new BusinessException(110, "异步调用异常！");
+        }
 
-        Future<User> user2Future = userService.asyncTest2(2L);
-        log.info("Async Test-2 - Controller: [{}], [{}]", Optional.ofNullable(user2Future.get()).map(User::getName).orElse(null), Thread.currentThread().getName());
-
-        return Lists.newArrayList(user1, user2Future.get());
+        return Lists.newArrayList();
 
     }
 }

@@ -56,7 +56,7 @@ spring:
     add-mappings: false
 
   datasource:
-    url: jdbc:mysql://139.199.115.242:3306/gumpLab?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    url: jdbc:mysql://139.199.115.242:3306/gumpLab?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456

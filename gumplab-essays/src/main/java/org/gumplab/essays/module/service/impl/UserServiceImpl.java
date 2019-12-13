@@ -16,15 +16,17 @@ public class UserServiceImpl implements UserService {
 
     @Async
     @Override
-    public User asyncTest1(Long id) {
+    public void asyncTest1(User user) {
+        System.out.println(1 / 0);
         log.info("Async Test-1 - Service: [{}]", Thread.currentThread().getName());
-        return User.builder().name("Async-Test-1 Result").build();
     }
 
     @Async
     @Override
-    public Future<User> asyncTest2(Long id) {
+    public Future<User> asyncTest2(User user) {
         log.info("Async Test-2 - Service: [{}]", Thread.currentThread().getName());
+        System.out.println(1 / 0);
         return new AsyncResult<>(User.builder().name("Async-Test-2 Result").build());
     }
+
 }

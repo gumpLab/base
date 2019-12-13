@@ -58,6 +58,6 @@ public class ResponseController {
     @ApiOperation("BusinessException response test")
     @GetMapping(value = "/error2")
     public String error2() {
-        throw new BusinessException(ResultCode.businses_exception_test);
+        throw new BusinessException(ResultCode.businses_exception);
     }
 }

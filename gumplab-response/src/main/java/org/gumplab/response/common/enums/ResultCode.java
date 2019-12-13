@@ -7,7 +7,7 @@ public enum ResultCode {
 
     error(500, "系统异常, 请联系管理员!"),
 
-    businses_exception_test(10000, "自定义返回值!");
+    businses_exception(10000, "业务处理异常!");
 
     Integer code;
 

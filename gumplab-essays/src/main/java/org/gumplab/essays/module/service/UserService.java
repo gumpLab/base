@@ -6,7 +6,7 @@ import java.util.concurrent.Future;
 
 public interface UserService {
 
-    User asyncTest1(Long id);
+    void asyncTest1(User user);
 
-    Future<User> asyncTest2(Long id);
+    Future<User> asyncTest2(User user);
 }

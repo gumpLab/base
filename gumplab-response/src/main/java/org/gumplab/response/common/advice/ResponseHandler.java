@@ -12,7 +12,7 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-// 必须指定 basePackages，负责会导致 swagger 无法解析json而无法使用
+// 必须指定 basePackages，否则会导致 swagger 无法解析json而无法使用
 @RestControllerAdvice(basePackages = "org.gumplab")
 public class ResponseHandler implements ResponseBodyAdvice<Object> {
 
