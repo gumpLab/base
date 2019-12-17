@@ -1,0 +1,3 @@
+gumplab:
+  enabled: true
+  config: handwriter.springboot.starter
