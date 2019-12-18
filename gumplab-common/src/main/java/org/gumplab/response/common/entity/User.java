@@ -1,4 +1,4 @@
-package org.gumplab.essays.module.entity;
+package org.gumplab.response.common.entity;
 
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +18,7 @@ public class User {
     @Column(nullable=false) // nullable=false 在内部将nullable = false转换为@NotNull
     private String name;
 
-    @Column(nullable=false)
+    @Column(nullable=false) 
     private String password;
 
     @Column(nullable=false)

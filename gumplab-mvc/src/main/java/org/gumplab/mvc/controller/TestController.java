@@ -9,7 +9,7 @@ public class TestController {
 
     @RequestMapping("/mvcTest")
     public String mvcTest() {
-        return "手写mvc！";
+        return "hand write mvc！";
     }
 
 

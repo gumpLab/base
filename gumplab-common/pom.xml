@@ -9,9 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>gumplab-response</artifactId>
+    <artifactId>gumplab-common</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <description>Response project for Spring Boot</description>
+    <description>Common project for Spring Boot</description>
 
     <build>
         <plugins>

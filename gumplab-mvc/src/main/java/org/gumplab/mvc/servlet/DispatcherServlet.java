@@ -28,7 +28,7 @@ public class DispatcherServlet extends HttpServlet {
     private Map<String, Object> controllerMap = new HashMap<>();
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(ServletConfig config) {
 
         // 1. 加载配置文件
         doLoadConfig(config.getInitParameter("contextConfigLocation"));

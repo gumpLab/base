@@ -1,0 +1,62 @@
+#Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+
+  port: 8010
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /redis
+    session:
+      timeout: 30ms
+
+
+spring:
+  application:
+    name: essays
+
+  #格式
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+
+  #jackson时间格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  cache:
+    type: redis
+  redis:
+    open: false                 #是否开启redis缓存 true开启 false关闭
+    host: 139.199.115.242
+    port: 6379
+    password: 123456            #密码（默认为空）
+    timeout: 6000ms             #连接超时时长（毫秒）
+    database: 0                 #redis默认情况下有16个分片，这里配置具体使用的分片，默认为0
+    lettuce:
+      pool:
+        max-active: 1000    #连接池最大连接数（使用负值表示没有限制）默认8
+        max-wait: -1ms      #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10        #连接池中的最大空闲连接
+        min-idle: 5         #连接池中的最小空闲连接
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /static/**
+
+  resources:
+    add-mappings: false
+
+  datasource:
+    url: jdbc:mysql://139.199.115.242:3306/gumpLab?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
