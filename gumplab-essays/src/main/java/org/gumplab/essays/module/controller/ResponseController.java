@@ -2,9 +2,9 @@ package org.gumplab.essays.module.controller;
 
 import io.swagger.annotations.ApiOperation;
 import org.gumplab.essays.module.entity.User;
-import org.gumplab.response.common.enums.ResultCode;
-import org.gumplab.response.common.exception.BusinessException;
-import org.gumplab.response.common.result.Result;
+import org.gumplab.common.enums.ResultCode;
+import org.gumplab.common.exception.BusinessException;
+import org.gumplab.common.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

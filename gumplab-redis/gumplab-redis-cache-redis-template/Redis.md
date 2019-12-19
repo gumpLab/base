@@ -1,4 +1,5 @@
 ## Redis
+- docker exec -it redis redis-cli
 - config set stop-writes-on-bgsave-error no
 - auth 123456
 ### 基本数据类型：String 

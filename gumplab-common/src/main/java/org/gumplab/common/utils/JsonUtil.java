@@ -1,4 +1,4 @@
-package org.gumplab.response.common.utils;
+package org.gumplab.common.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.type.TypeReference;

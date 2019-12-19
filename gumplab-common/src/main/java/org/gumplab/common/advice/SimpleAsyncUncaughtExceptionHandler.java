@@ -1,4 +1,4 @@
-package org.gumplab.response.common.advice;
+package org.gumplab.common.advice;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ public class SimpleAsyncUncaughtExceptionHandler implements AsyncUncaughtExcepti
 
     @Override
     public void handleUncaughtException(Throwable ex, Method method, Object... params) {
-        ex.printStackTrace();
         log.error("{}, {}, {}", ex.getMessage(), method.getName(), JSON.toJSON(params));
+        ex.printStackTrace();
     }
 }

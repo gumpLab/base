@@ -1,6 +1,6 @@
 package org.gumplab.essays.common.async;
 
-import org.gumplab.response.common.advice.SimpleAsyncUncaughtExceptionHandler;
+import org.gumplab.common.advice.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;

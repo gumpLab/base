@@ -1,4 +1,4 @@
-package org.gumplab.response.common.enums;
+package org.gumplab.common.enums;
 
 
 public enum ResultCode {

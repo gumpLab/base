@@ -1,15 +1,20 @@
-package org.gumplab.response.common.entity;
+package org.gumplab.common.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "user") //表名与实体名一样可不用配置该注解
 @Entity
 @Data
 @Builder
-public class User {
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

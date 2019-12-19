@@ -1,9 +1,9 @@
-package org.gumplab.response.common.advice;
+package org.gumplab.common.advice;
 
 import lombok.extern.slf4j.Slf4j;
-import org.gumplab.response.common.enums.ResultCode;
-import org.gumplab.response.common.exception.BusinessException;
-import org.gumplab.response.common.result.ErrorResult;
+import org.gumplab.common.exception.BusinessException;
+import org.gumplab.common.result.ErrorResult;
+import org.gumplab.common.enums.ResultCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

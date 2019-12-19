@@ -1,9 +1,9 @@
 
-package org.gumplab.response.common.advice;
+package org.gumplab.common.advice;
 
-import org.gumplab.response.common.utils.JsonUtil;
-import org.gumplab.response.common.result.ErrorResult;
-import org.gumplab.response.common.result.Result;
+import org.gumplab.common.utils.JsonUtil;
+import org.gumplab.common.result.ErrorResult;
+import org.gumplab.common.result.Result;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

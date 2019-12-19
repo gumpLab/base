@@ -1,7 +1,7 @@
-package org.gumplab.response.common.exception;
+package org.gumplab.common.exception;
 
 import lombok.Data;
-import org.gumplab.response.common.enums.ResultCode;
+import org.gumplab.common.enums.ResultCode;
 
 @Data
 public class BusinessException extends RuntimeException {

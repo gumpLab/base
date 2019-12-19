@@ -1,8 +1,8 @@
-package org.gumplab.response.common.result;
+package org.gumplab.common.result;
 
 import lombok.Builder;
 import lombok.Data;
-import org.gumplab.response.common.enums.ResultCode;
+import org.gumplab.common.enums.ResultCode;
 
 @Data
 @Builder

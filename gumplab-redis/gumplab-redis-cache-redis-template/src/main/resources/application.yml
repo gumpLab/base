@@ -32,9 +32,9 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
 
   cache:
-    type: redis
+    type: redis                #缓存类型设置为 redis
   redis:
-    open: false                 #是否开启redis缓存 true开启 false关闭
+    open: true                 #是否开启redis缓存 true开启 false关闭
     host: 139.199.115.242
     port: 6379
     password: 123456            #密码（默认为空）
@@ -53,6 +53,11 @@ spring:
 
   resources:
     add-mappings: false
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
 
   datasource:
     url: jdbc:mysql://139.199.115.242:3306/gumpLab?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
