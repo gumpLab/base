@@ -22,8 +22,10 @@
         <module>gumplab-springboot/gumplab-spring-boot-starter</module>
         <module>gumplab-springboot/gumplab-spring-boot-starter-test</module>
         <!-- springcloud -->
-        <module>gumplab-springcloud/gumplab-spring-cloud-eureka-server</module>
         <module>gumplab-springcloud/gumplab-spring-cloud-gateway</module>
+        <module>gumplab-springcloud/gumplab-spring-cloud-eureka-server</module>
+        <module>gumplab-springcloud/gumplab-spring-cloud-eureka-client</module>
+        <module>gumplab-transaction/gumplab-transaction-manager</module>
     </modules>
 
     <groupId>org.gumpLab</groupId>
