@@ -1,6 +1,18 @@
-在《Spring Cloud微服务全栈技术与案例解析》书籍中的eureka章节，按照书籍中的配置写法，打开localhost:8761页面，无法加载wro.css和wro.js。
-这是因为在application.properties中添加了spring.resources.add-mappings=true。
-这导致没有为静态资源添加路径映射。因此只需要修改为false就可以访问静态资源。
-eureka注册服务端口与app端口配置可以不同。
-eureka注册中心的端口永远是8761，如果app端口不设置为8761，导致eureka注册连接一直报错。
-如果app端口设置为7000，那么需要添加eureka服务地址配置。eureka.client.service-url.defaultZone=http://localhost:7000/eureka
+# 单节点服务注册中心 (application.yml)
+# 双节点高可用服务注册中心 (application-server1.yml, application-server1.yml)
+## windows本地启动两个注册中心
+1. 在 server1 的配置文件中，让它的service-url指向 server2，在 server2 的配置文件中让它的service-url指向 server1
+2. 为了让 server1 和 server2 能够被正确的访问到，我们需要在C:\Windows\System32\drivers\etc目录下的hosts文件总添加两行配置，如下:
+127.0.0.1 server1
+127.0.0.1 server2
+3. 由于 server1 和 server2 互相指向对方，实际上我们构建了一个双节点的服务注册中心集群
+
+## windows本地启动两个jar并访问: http://localhost:8761/eureka-server1/, http://localhost:8762/eureka-server2/
+java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=server1  
+java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=server2
+
+## 客户端添加两个注册中心的地址：
+eureka.client.service-url.defaultZone=http://admin:123456@localhost:8761/eureka-server1/eureka/,http://admin:123456@localhost:8761/eureka-server2/eureka/ 
+
+# ps: server1和server2部署在两个服务器，只需修改相应的localhost进行相互注册
+

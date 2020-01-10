@@ -16,6 +16,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://admin:123456@localhost:8761/eureka-server/eureka/
+      #defaultZone: http://admin:123456@localhost:8761/eureka-server1/eureka/,http://admin:123456@localhost:8762/eureka-server2/eureka/ (高可用注册中心)
   instance:
     prefer-ip-address: true
 
