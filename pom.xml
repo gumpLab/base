@@ -26,6 +26,7 @@
         <module>gumplab-springcloud/gumplab-spring-cloud-eureka-server</module>
         <module>gumplab-springcloud/gumplab-spring-cloud-eureka-client</module>
         <module>gumplab-transaction/gumplab-transaction-manager</module>
+        <module>gumplab-algorithm</module>
     </modules>
 
     <groupId>org.gumpLab</groupId>
