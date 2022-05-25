@@ -14,7 +14,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <spring-core.version>5.2.0.RELEASE</spring-core.version>
+        <spring-core.version>5.2.22.RELEASE</spring-core.version>
         <spring-beans.version>5.2.0.RELEASE</spring-beans.version>
         <spring-context.version>5.2.0.RELEASE</spring-context.version>
     </properties>
