@@ -42,7 +42,7 @@
         <druid.version>1.1.10</druid.version>
         <lombok.version>1.18.8</lombok.version>
         <swagger.version>2.7.0</swagger.version>
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <!-- maven 打包出现不再支持源选项5，请选择6以上版本，加此项配置 -->
         <maven.compiler.source>10</maven.compiler.source>
         <maven.compiler.target>10</maven.compiler.target>
